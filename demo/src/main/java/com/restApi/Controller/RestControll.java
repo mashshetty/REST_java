@@ -67,6 +67,13 @@ public class RestControll {
 		
 	}
 	
+	@GetMapping("/getdata")
+	public Person getData(@RequestParam String name, @RequestParam String age) {
+		return people().stream().filter((person)->person.getAge().equals(age) && person.getName().equals(name) ).findAny().orElse(new Person());
+		
+		
+	}
+	
 	@RequestMapping("/people")
 	private List<Person> people(){
 		return Arrays.asList(
@@ -78,6 +85,8 @@ public class RestControll {
 				);
 		
 	}
+	
+	
 	
 	
 
